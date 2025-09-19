@@ -5,6 +5,17 @@
 The Fal1out contract contains a **constructor mis-declaration vulnerability**. The developer mistakenly defined a function `Fal1out()` instead of using the `constructor` keyword. An attacker can call `Fal1out()` after deployment to **become the owner**, allowing them to withdraw all contract funds.
 
 ---
+## How to Audit Fal1out on Ethernaut via Console Interaction
+
+```js
+contract.Fal1out()
+```
+
+1. `contract.Fal1out()`
+   This directly calls the **Fal1out function**, which was mistakenly written as a regular function instead of a constructor.
+
+   * When executed, it sets `owner = msg.sender`.
+   * This makes you (the caller) the new **owner** of the contract.
 
 ## Vulnerability Details
 
