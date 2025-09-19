@@ -1,5 +1,5 @@
-````markdown
-# Ethernaut Level 2 – Fallback Contract Audit
+
+# Ethernaut Level 1 – Fallback Contract Audit
 
 ## Summary
 The Fallback contract contains an **ownership takeover vulnerability**. An attacker with a minimal contribution can bypass the ownership logic in `contribute()` by using the `receive()` function and become the owner, allowing them to withdraw all contract funds.
@@ -10,7 +10,7 @@ The Fallback contract contains an **ownership takeover vulnerability**. An attac
 - **Problem:**  
   The `contribute()` function restricts contributions to less than 0.001 ether, so an attacker cannot out-contribute the initial owner (1000 ether).  
   The `receive()` function only checks that the sender has a non-zero contribution:
-
+````markdown
 ```solidity
 receive() external payable {
     require(msg.value > 0 && contributions[msg.sender] > 0);
@@ -50,7 +50,3 @@ require(contributions[msg.sender] > contributions[owner]);
 * Tested locally on Remix.
 * Tool used: Remix basic analyzer.
 * This audit highlights how `fallback` or `receive` functions can bypass balance-based logic in contracts.
-
-```
-Do you want me to do that?
-```
