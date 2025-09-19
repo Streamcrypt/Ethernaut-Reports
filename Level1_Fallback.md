@@ -44,7 +44,7 @@ require(contributions[msg.sender] > contributions[owner]);
 
 * Or remove ownership assignment from `receive()` entirely and rely on `contribute()` for ownership changes.
 
-# How i audited on ethernaut via console interaction
+## How to audit on fallback level via console interaction
 
 ```js
 await contract.contribute({value: toWei("0.0002")})
