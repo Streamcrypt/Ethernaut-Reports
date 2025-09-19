@@ -1,4 +1,3 @@
-```markdown
 # Ethernaut Audit Reports
 
 Welcome to my **Ethernaut Solidity audit repository**. This repo contains **step-by-step audits** of Ethernaut levels, highlighting vulnerabilities, reasoning, proofs-of-concept (PoCs), impact assessment, and mitigation suggestions.  
@@ -50,7 +49,6 @@ For each level, I follow a structured approach:
 - [Remix IDE](https://remix.ethereum.org) – Manual testing & deployment  
 - Remix basic analyzer – Static code analysis  
 
----
 
 ## License
 
