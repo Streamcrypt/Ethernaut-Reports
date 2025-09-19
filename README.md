@@ -42,14 +42,6 @@ For each level, I follow a structured approach:
 - This repo demonstrates **manual auditing reasoning first**, then tool verification second.  
 - Future updates will include **more Ethernaut levels and advanced contract audits**.
 
----
-
-## Tools Used
-
-- [Remix IDE](https://remix.ethereum.org) – Manual testing & deployment  
-- Remix basic analyzer – Static code analysis  
-
-
 ## License
 
 All audit content is **MIT License**, feel free to study, reference, and learn.
