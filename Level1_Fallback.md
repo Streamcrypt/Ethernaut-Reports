@@ -10,12 +10,13 @@ The Fallback contract contains an **ownership takeover vulnerability**. An attac
 - **Problem:**  
   The `contribute()` function restricts contributions to less than 0.001 ether, so an attacker cannot out-contribute the initial owner (1000 ether).  
   The `receive()` function only checks that the sender has a non-zero contribution:
-````markdown
+
 ```solidity
 receive() external payable {
     require(msg.value > 0 && contributions[msg.sender] > 0);
     owner = msg.sender;
 }
+
 ````
 This allows anyone with a minimal contribution to become the owner, bypassing the intended ownership logic.
 
