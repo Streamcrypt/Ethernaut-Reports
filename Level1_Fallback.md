@@ -53,7 +53,7 @@ contract.withdraw()
 ```
 
 1. `await contract.contribute({value: toWei("0.0002")})`
-   This function deposits **0.0002 ether** to the contract by converting ether → wei (the EVM unit). The converted wei amount is what is actually sent on-chain.
+   This function deposits **0.0002 ether** to the contract by converting ether → wei (the EVM unit). 
 
 2. `contract.sendTransaction({value: toWei("0.003")})`
    This sends **0.003 ether** directly to the contract address. If the contract has a `receive()`/fallback, that function will automatically run and accept the 0.003 ether.
