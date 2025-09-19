@@ -45,5 +45,3 @@ For each level, I follow a structured approach:
 ## License
 
 All audit content is **MIT License**, feel free to study, reference, and learn.
-
-Do you want me to do that?
