@@ -27,8 +27,8 @@ For each level, I follow a structured approach:
 
 | Level | Contract | Report |
 |-------|----------|--------|
-| 1 | Fallback | [Level 1 – Fallback Audit](./Level1_Fallback_Audit.md) |
-| 2 | Fallback | [Level 2 – Fallback Audit](./Level2_Fallback_Audit.md) |
+| 1 | Fallback | [Level 1 – Fallback Audit](./Level1_Fallback.md) |
+| 2 | Fallback | [Level 2 – Fallout Audit](./Level2_Fallback_Audit.md) |
 | 3 | … | … |
 | … | … | … |
 
